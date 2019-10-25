@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShapesLibrary
 {
-    public class Point : IPoint, IDrawable
+    public class Point : IPoint, IDrawable, ICloneable, IComparable
     {
         private int _x;
         private int _y;
@@ -41,6 +41,27 @@ namespace ShapesLibrary
             else
                 throw new PointException("I can't draw in negative...");    
         }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Point another)
+            {
+                if (this.X + this.Y > another.X + another.Y)
+                    return 1;
+                else if (this.X + this.Y < another.X + another.Y)
+                    return -1;
+                else
+                    return 0;
+            }
+            else
+                throw new Exception($"Cannot format to point");
+        }
+
         private class PointException : Exception
         {
             public PointException(string message) : base(message)
