@@ -1,0 +1,2 @@
+# BaseCSharpKnowledge
+ Base Methods
