@@ -20,12 +20,13 @@ namespace ShapesLibrary
         }
         public static void DrawCircle(object sender, DrawEventArgs args)
         {
+            Console.WriteLine(args.Message);
             if(sender is Circle circle)
             {
-                DrawPoint(circle.StartPoint + new Point(circle.Radius, 0), new DrawEventArgs($"Point of circle"));
-                DrawPoint(circle.StartPoint + new Point(0, circle.Radius), new DrawEventArgs($"Point of circle"));
-                DrawPoint(circle.StartPoint + new Point(-circle.Radius, 0), new DrawEventArgs($"Point of circle"));
-                DrawPoint(circle.StartPoint + new Point(0, -circle.Radius), new DrawEventArgs($"Point of circle"));
+                DrawPoint(circle.StartPoint + new Vector2(0, -circle.Radius), args);
+                DrawPoint(circle.StartPoint + new Vector2(circle.Radius, 0), args);
+                DrawPoint(circle.StartPoint + new Vector2(0, circle.Radius), args);
+                DrawPoint(circle.StartPoint + new Vector2(-circle.Radius, 0), args);
             }
             else
             {

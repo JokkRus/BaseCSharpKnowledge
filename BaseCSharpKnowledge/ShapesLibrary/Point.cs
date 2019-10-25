@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 
 namespace ShapesLibrary
 {
@@ -12,10 +13,11 @@ namespace ShapesLibrary
         public int Y => _y;
         public event DrawHandler OnDraw;
 
-        public Point(int x, int y)
+        public Point(int x, int y, DrawHandler drawPoint)
         {
             _x = x;
             _y = y;
+            OnDraw += drawPoint;
         }
         public override string ToString()
         {
@@ -62,9 +64,9 @@ namespace ShapesLibrary
                 throw new Exception($"Cannot format to point");
         }
 
-        public static Point operator + (Point p1, Point p2)
+        public static Point operator + (Point p1, Vector2 vector)
         {
-            return new Point(p1.X + p2.X, p1.Y + p2.Y);
+            return new Point(p1.X + vector.X, p1.Y + vector.Y, p1.OnDraw);
         }
 
         private class PointException : Exception
