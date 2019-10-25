@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections;
 
 namespace ShapesLibrary
 {
-    public class Square : Shape, ICloneable, IComparable
+    public class Square : Shape, ICloneable, IComparable, IEnumerable
     {
         private int _size;
         public int Size => _size;
@@ -46,6 +47,11 @@ namespace ShapesLibrary
             {
                 throw new Exception($"Cannot format to square.");
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return points.GetEnumerator();
         }
     }
 }
