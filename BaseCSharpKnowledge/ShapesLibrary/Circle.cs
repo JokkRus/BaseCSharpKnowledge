@@ -38,7 +38,8 @@ namespace ShapesLibrary
 
         public override void Draw()
         {
-            OnDraw?.Invoke(this, new DrawEventArgs($"It's Circle."));
+            _startPoint.Draw();
+            OnDraw?.Invoke(this, new DrawEventArgs($"It's Circle"));
         }
     }
 }

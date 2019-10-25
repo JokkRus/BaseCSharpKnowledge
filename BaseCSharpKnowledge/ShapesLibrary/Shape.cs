@@ -8,6 +8,7 @@ namespace ShapesLibrary
     {
         public abstract event DrawHandler OnDraw;
         protected Point _startPoint;
+        public Point StartPoint => _startPoint;
         public Shape() { }
         public Shape(Point point)
         {
