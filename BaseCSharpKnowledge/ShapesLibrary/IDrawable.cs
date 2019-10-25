@@ -7,6 +7,7 @@ namespace ShapesLibrary
     public delegate void DrawHandler(object sender, DrawEventArgs args);
     public interface IDrawable
     {
+        event DrawHandler OnDraw;
         void Draw();
     }
     public class DrawEventArgs : EventArgs

@@ -10,6 +10,8 @@ namespace ShapesLibrary
         private int _y;
         public int X => _x;
         public int Y => _y;
+        public event DrawHandler OnDraw;
+
         public Point(int x, int y)
         {
             _x = x;
@@ -34,7 +36,18 @@ namespace ShapesLibrary
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            if (_x >= 0 && _y >= 0)
+                OnDraw?.Invoke(this, new DrawEventArgs($"({_x},{_y})"));
+            else
+                throw new PointException("I can't draw in negative...");    
+        }
+        private class PointException : Exception
+        {
+            public PointException(string message) : base(message)
+            {
+
+            }
         }
     }
+    
 }
