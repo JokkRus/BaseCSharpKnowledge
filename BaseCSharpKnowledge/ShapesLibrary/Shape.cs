@@ -7,7 +7,7 @@ namespace ShapesLibrary
     public abstract class Shape : IDrawable
     {
         public event DrawHandler OnDraw;
-        Point _startPoint;
+        protected Point _startPoint;
         public Shape() { }
         public Shape(Point point)
         {

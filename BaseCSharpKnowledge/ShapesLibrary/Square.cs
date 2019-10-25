@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShapesLibrary
 {
-    public class Square : Shape
+    public class Square : Shape, ICloneable, IComparable
     {
         private int _size;
         public int Size => _size;
@@ -22,6 +22,29 @@ namespace ShapesLibrary
             foreach(Point p in points)
             {
                 p.Draw();
+            }
+        }
+
+        public object Clone()
+        {
+            Point point = _startPoint.Clone() as Point;
+            return new Square(point, this.Size);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if(obj is Square square)
+            {
+                if (this.Size > square.Size)
+                    return 1;
+                else if (this.Size < square.Size)
+                    return -1;
+                else
+                    return 0;
+            }
+            else
+            {
+                throw new Exception($"Cannot format to square.");
             }
         }
     }
